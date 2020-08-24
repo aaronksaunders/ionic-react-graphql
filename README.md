@@ -1,9 +1,7 @@
-# Ionic Horizontal & SideMenu Navigation in ReactJS
+# Ionic ReactJS And GraphQL
 
-![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/3azc2gnjtosz8n1anawy.gif)
+Sample Application using Apollo Client's React Hooks API
+- https://www.apollographql.com/docs/react/api/react/hooks/
 
-See full explanation and blog post on dev.to
-
-https://dev.to/aaronksaunders/ionic-horizontal-sidemenu-navigation-in-reactjs-2ko6
-
-Ionic Framework Horizontal & SideMenu Navigation in ReactJS Application https://youtu.be/S7whj93SGsA via @YouTube
+Using the `json-graphql-server` npm package to quickly spin up a sample GraphQL Server
+- https://github.com/marmelab/json-graphql-server
