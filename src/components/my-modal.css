@@ -1,0 +1,56 @@
+#my-modal h1,
+#my-modal p {
+  font-family: Lato;
+}
+.item-has-focus {
+  /* color : white !important; */
+}
+#my-modal ion-label {
+  font-weight: bold;
+  font-size: larger !important;
+  --background: transparent !important;
+  --highlight-color-focused: white !important;
+}
+
+#my-modal ion-content {
+  --background: #538763 !important;
+}
+
+#my-modal ion-item {
+  --background: transparent !important;
+  --highlight-background: white !important;
+}
+
+#my-modal ion-item.item-has-focus > ion-label {
+  color: white !important;
+}
+
+#my-modal ion-button {
+  font-weight: bold;
+  color: black !important;
+  --border-color: black !important;
+  --background-activated: white !important;
+  --background: #90b69c !important;
+  --border-width: 1px;
+}
+#my-modal ion-button:hover {
+  color: gray !important;
+  --border-color: gray !important;
+  --background-activated: gray !important;
+}
+
+/* #cancelBtn:hover {
+  color: red !important;
+  --border-color: red !important;
+  --background-activated: red !important;
+} */
+
+#my-modal ion-header {
+  --background: transparent !important;
+  --padding-start : 0px
+}
+
+#my-modal ion-toolbar {
+  --background: #90b69c !important;
+  background: #90b69c !important;
+}

@@ -1,0 +1,49 @@
+h1,
+p {
+  font-family: Lato;
+}
+#e ion-label {
+  font-weight: bold;
+  font-size: larger !important;
+  --background: transparent !important;
+  --highlight-color-focused: white !important;
+}
+ion-header {
+  --background: transparent !important;
+  --padding-start: 0px;
+}
+
+ion-toolbar {
+  --background: #90b69c !important;
+  background: #90b69c !important;
+}
+ion-page {
+  --background: #538763 !important;
+}
+ion-content {
+  --background: #538763 !important;
+}
+
+ion-item {
+  --background: transparent !important;
+  --padding-start: 0px;
+}
+
+#my-menu ion-item ion-label {
+  padding-left: 8px;
+  font-weight: 800;
+}
+
+ion-button {
+  font-weight: bold;
+  color: black !important;
+  --border-color: black !important;
+  --background-activated: white !important;
+  --background: #90b69c !important;
+  --border-width: 1px;
+}
+ion-button:hover {
+  color: gray !important;
+  --border-color: gray !important;
+  --background-activated: gray !important;
+}
