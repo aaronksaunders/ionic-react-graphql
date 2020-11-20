@@ -5,3 +5,4 @@ Sample Application using Apollo Client's React Hooks API
 
 Using the `json-graphql-server` npm package to quickly spin up a sample GraphQL Server
 - https://github.com/marmelab/json-graphql-server
+- start server `json-graphql-server db.json`
