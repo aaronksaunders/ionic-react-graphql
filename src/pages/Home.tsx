@@ -13,73 +13,27 @@ import { v4 as uuidv4 } from "uuid";
 import "./Home.css";
 import { NavButtons } from "../components/NavButtons";
 
-import { gql, useQuery, useMutation } from "@apollo/client";
 import MyModal from "../components/MyModal";
-import  ListItem  from "../components/ListItem";
-import  ErrorToast  from "../components/ErrorToast";
-
-const ALL_POST_QUERY = gql`
-  {
-    allPosts {
-      id
-      title
-      description
-    }
-  }
-`;
-
-const ADD_POST_MUTATION = gql`
-  mutation createPost(
-    $title: String!
-    $description: String!
-    $id: ID!
-    $userId: ID!
-  ) {
-    createPost(
-      title: $title
-      description: $description
-      views: 0
-      user_id: $userId
-      id: $id
-    ) {
-      id
-      title
-    }
-  }
-`;
+import ListItem from "../components/ListItem";
+import ErrorToast from "../components/ErrorToast";
+import { useData } from "../DataContext";
+import { useDataMutation } from "../DataMutationContext";
 
 const Home: React.FC = () => {
-  const { loading: qLoading, error: qError, data: qData } = useQuery(
-    ALL_POST_QUERY
-  );
-
-  const [
-    addPost,
-    { data: mData, loading: mLoading, error: mError },
-  ] = useMutation(ADD_POST_MUTATION, {
-    update: (cache, { data: { createPost } }) => {
-      // get the posts from the cache...
-      const currentData: any = cache.readQuery({ query: ALL_POST_QUERY });
-      // add the new post to the cache & write results back to cache
-      cache.writeQuery({
-        query: ALL_POST_QUERY,
-        data: {
-          allPosts: [...currentData.allPosts, createPost],
-        },
-      });
-    },
-  });
+  const { ALL_POST_QUERY, error, data, loading } = useData();
+  const m = useDataMutation();
 
   // tracks modal state
   const [showAddItem, setShowAddItem] = useState(false);
 
-  // track state of my user
-  // const [myUser, setMyUser] = useState({ name: "Aaron" });
-
+  /**
+   * 
+   * @param resp 
+   */
   const processResp = async (resp: any) => {
     if (resp.cancelled) return;
     try {
-      await addPost({
+      await m.addPost({
         variables: {
           title: resp.data?.title,
           description: resp.data?.description,
@@ -90,7 +44,7 @@ const Home: React.FC = () => {
     } catch (e) {}
   };
 
-  if (mLoading || qLoading) return <IonLoading isOpen={mLoading || qLoading} />
+  if (m.loading || loading) return <IonLoading isOpen={m.loading || loading} />;
 
   return (
     <IonPage id="home">
@@ -111,7 +65,6 @@ const Home: React.FC = () => {
           </IonButtons>
         </IonToolbar>
 
-
         <MyModal
           isOpen={showAddItem}
           initialData={null}
@@ -121,14 +74,12 @@ const Home: React.FC = () => {
             console.log(resp);
           }}
         />
-        <ErrorToast error={mError || qError} />
-        {qData &&
-          qData.allPosts.map((e: any) => <ListItem data={e} key={e.id} />)}
+        <ErrorToast error={m.error || error} />
+        {data &&
+          data.allPosts.map((e: any) => <ListItem data={e} key={e.id} />)}
       </IonContent>
     </IonPage>
   );
 };
 
 export default Home;
-
-

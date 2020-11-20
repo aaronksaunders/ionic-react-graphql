@@ -4,6 +4,7 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { DataContextProvider } from "./DataContext";
 
 const client = new ApolloClient({
   uri: "http://localhost:3000/",
